@@ -22,7 +22,7 @@
         $("#user_code").val(user.userModel.getCurrentData().user_code);
         $("#user_name").val(user.userModel.getCurrentData().user_name);
         $("#mobile").val(user.userModel.getCurrentData().mobile);
-        $("#def1").val(user.userModel.getCurrentData().def1);
+        $("#def1").val(user.userModel.getCurrentData().def1/100);
     };
 
     //定义页面成员方法
@@ -285,7 +285,9 @@
                 {"title": "用户编码", 'data': 'user_code'},
                 {"title": "用户名称", 'data': 'user_name'},
                 {"title": "联系方式", 'data': 'mobile'},
-                {"title": "积分", 'data': 'def1'},
+                {"title": "积分", 'data': 'def1','render':function ( data, type, full, meta ) {
+                    return data/100;
+                }},
             ],
             onSelectChange: function (selectedNum, selectedRows) {
                 if (selectedNum > 1) {
@@ -306,7 +308,7 @@
             user.userModel.getCurrentData().user_code = $("#user_code").val();
             user.userModel.getCurrentData().user_name = $("#user_name").val();
             user.userModel.getCurrentData().mobile = $("#mobile").val();
-            user.userModel.getCurrentData().def1 = $("#def1").val();
+            user.userModel.getCurrentData().def1 = $("#def1").val()*100;//单位为元
 
             $.ajax({
                 type: 'post',

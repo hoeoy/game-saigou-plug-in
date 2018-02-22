@@ -149,6 +149,7 @@
                 url: _param.url,
                 urlType: _param.urlType,
                 param: _param.param,
+                order: _param.order,
                 columns: _param.columns,
                 onSelectChange: _param.onSelectChange,
                 single: _param.single//是否单选模式
@@ -213,7 +214,7 @@
                 },
                 //"ordering" : false,// 全局禁用排序
                 // "bPaginate":false,//翻页功能,
-                "order": [[2, "desc"]],
+                "order": param.order ? param.order : [[2, "desc"]],
                 "aLengthMenu": [10, 20, 40, 60, 100, 200, 500, 1000],
                 "LengthChange": true,//改变每页显示的数据量
                 //  "bFilter":false,//过滤功能
