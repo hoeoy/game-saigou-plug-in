@@ -97,17 +97,28 @@
             betRecord.controller.search();
         };
 
+        //设置开奖号码
+        betRecord.controller.setWin = function () {
+            var winNum = $("#winNum").val();
+            window.houoy.public.post(window.houoy.public.static.contextPath + '/api/period/setWinNum?winNum='+winNum, null,
+                function (data) {
+                    alert(data.content);
+                }, function (data) {
+                    alert(data.msg);
+                });
+        };
+
         return betRecord.controller;
     }());
 
-    //betRecord.registerEvent = function () {
-    //    //注册事件监听
-    //    $("#searchBtn").click(betRecord.controller.search);
-    //    $("#searchResetBtn").click(betRecord.controller.searchReset);
-    //};
+    betRecord.registerEvent = function () {
+        //注册事件监听
+        $("#setWinNum").click(betRecord.controller.setWin);
+        //$("#searchResetBtn").click(betRecord.controller.searchReset);
+    };
 
     betRecord.view.new();
-    //betRecord.registerEvent();
+    betRecord.registerEvent();
 
 })(window.houoy.betRecord || {});
 

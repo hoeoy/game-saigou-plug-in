@@ -59,7 +59,11 @@
                     {"title": "10", 'data': 'bet_10', 'render': incomeRecord.tableCellRender},
                     {"title": "总下注", 'data': 'total_bet', 'render': incomeRecord.tableCellRender},
                     {"title": "开奖号码", 'data': 'win_num'},
-                    {"title": "开奖方式", 'data': 'win_type'},
+                    {"title": "开奖方式", 'data': 'win_type',"render":function(data){
+                        if(!data || data==0) return "自动";
+                        if(data==1) return "手动";
+                        return data;
+                    }},
                     {"title": "收益", 'data': 'total_win', 'render': incomeRecord.tableCellRender},
                     {"title": "更新时间", 'data': 'ts'},
                 ],
